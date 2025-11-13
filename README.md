@@ -1,1 +1,1 @@
-# GAURI-JADHAV
+sql queies
