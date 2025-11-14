@@ -55,7 +55,8 @@ FROM superstore;
        sum(profit)as total_profit
        from superstore
        group by year(`Order Date`)
-       order by year;-- 9. Which countries and cities are driving the highest sales?
+       order by year;
+-- 9. Which countries and cities are driving the highest sales?
      select country city,
      sum(sales)as total_sales
      from superstore
