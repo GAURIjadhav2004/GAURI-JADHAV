@@ -1,1 +1,1 @@
-sql queies
+s
