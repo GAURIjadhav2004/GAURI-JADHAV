@@ -55,4 +55,33 @@ FROM superstore;
        sum(profit)as total_profit
        from superstore
        group by year(`Order Date`)
-       order by year;
+       order by year;-- 9. Which countries and cities are driving the highest sales?
+     select country city,
+     sum(sales)as total_sales
+     from superstore
+     group by country, city
+     order by total_sales desc
+     limit 10;
+-- 10. What is the average delivery time from order to ship date across regions?
+	select region,
+    round(avg(DATEDIFF(`SHIP DATE`,`ORDER DATE`)),2)AS AVERAGE_DELIVERY_TIME
+    FROM SUPERSTORE
+    GROUP BY REGION
+    ORDER BY AVERAGE_DELIVERY_TIME;
+-- 11. what is the profit distribution across order priority?
+      SELECT `ORDER PRIORITY`,SUM(PROFIT)AS TOTAL_PROFIT
+      FROM SUPERSTORE
+      GROUP BY `ORDER PRIORITY`
+      ORDER BY TOTAL_PROFIT DESC;
+-- 12. Suggest data-driven recommendations for improving profit and reducing losses.
+Strategies for Improving Profit
+Optimize Pricing Strategies:
+Use data analytics to analyze customer demand, competitor pricing, and market conditions to set optimal prices. Dynamic pricing models, as used by airlines and hotels, can adjust prices in real-time to maximize revenue based on demand fluctuations.
+Enhance Customer Targeting and Personalization:
+Analyze customer demographics, preferences, and purchasing habits to segment customers and tailor marketing campaigns and product offerings to specific groups. This increases the likelihood of conversion and maximizes return on investment (ROI) on marketing spend.
+Maximize Customer Retention and Upsells: Use behavioral data to identify high-value customers and those at risk of churn. Implement targeted strategies, such as personalized offers or loyalty programs, to retain these customers. Upselling and cross-selling to existing customers is significantly more cost-effective than acquiring new ones.
+Identify New Revenue Streams:
+Analyze market trends and customer insights to spot gaps in the market or opportunities for new product or service development that align with customer needs.
+Optimize Product Mix: 
+Analyze sales data to identify best-selling and underperforming products. Allocate resources to high-margin items and consider eliminating or adjusting low-performing products to free up capital and effort. 
+Strategies for Reducing Losses
