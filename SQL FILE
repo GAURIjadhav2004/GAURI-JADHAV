@@ -1,0 +1,58 @@
+-- 1. Find the Total revenue, quantities and Profit generated.
+ SELECT 
+  SUM(sales) AS Total_Revenue,
+  SUM(quantity) AS Total_Quantities,
+  SUM(profit) AS Total_Profit
+FROM superstore;
+
+-- 2. Find the Segment wise distribution of the Sales.
+ SELECT SUM(SALES) AS distribution_of
+ FROM SUPERSTORE
+ GROUP BY SALES;
+
+-- 3. Find the top 3 most profitable Products.
+    select `product name`,sum(profit) as total_profit
+    from superstore
+    group by`product name`
+    order by total_profit desc
+    limit 3;
+
+-- 4. How many orders are placed after January 2016.
+  SELECT Count(*) as order_after_january_2016
+  from superstore
+  where `Order Date`>'2016-01-31';
+
+
+-- 5. How many states from Mexico are under the roof of business?
+ SELECT COUNT(state)AS state_in_mexico
+ FROM SUPERSTORE
+ WHERE COUNTRY='MEXICO';
+
+-- 6. which products and subcategories are most and least profitable ?
+    SELECT `Product Name`,`Sub-Category`,SUM(PROFIT)AS TOTAL_PROFIT
+    FROM SUPERSTORE
+    GROUP BY `Product Name`,`Sub-Category`
+    ORDER BY TOTAL_PROFIT DESC
+    LIMIT 5;
+    
+-- Least profitable products and subcategories
+    select `Product Name`, `sub-category`, sum(profit)as total_profit
+    from superstore
+    group by `Product Name`, `sub-category`
+    order by total_profit asc
+    limit 5;
+ 
+-- 7. Which customer segment contributes the most to the total revenue?
+      select `Segment`,sum(sales)as total_revenue
+      from superstore
+      group by `segment`
+      order by total_revenue desc
+      limit 1;
+
+-- 8. What is the year-over-year growth in sales and Profit?
+       select year(`order date`)as year,
+       sum(sales)as total_sales,
+       sum(profit)as total_profit
+       from superstore
+       group by year(`Order Date`)
+       order by year;
